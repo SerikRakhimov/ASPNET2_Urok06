@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNet.Identity
+@model MiniInstagramWithAuth.Models.Post
+<p>Текущий пользователь - @User.Identity.GetUserName()</p>
+<p>
+    <h3 class="text-success">Пост</h3>
+</p>
+<p>
+    <img src="/Content/Images/@Model.Url" width="550" height="550">
+    <h4 class="text-success">Likes  = @Model.Likes </h4>
+</p>
+
+@if (User.Identity.GetUserName() != "SerikRakhimov@mail.ru")
+{
+    <form action="/Home/Like" method="post">
+        <input type="hidden" name="Id" value="@Model.Id">
+        <input type="hidden" name="Text" value="@Model.Text">
+        <input type="hidden" name="Url" value="@Model.Url">
+        <input type="hidden" name="Likes" value="@Model.Likes">
+        <button type="submit" class="btn btn-lg btn btn-success">Like post</button>
+    </form>
+}
+<p>
+    <h4 class="text-primary">@Model.Text </h4>
+</p>
+<hr />
+<p>
+    <a href="/Home/Index" class="btn btn-primary btn-lg">На главную страницу</a>
+</p>
+
+
+
+

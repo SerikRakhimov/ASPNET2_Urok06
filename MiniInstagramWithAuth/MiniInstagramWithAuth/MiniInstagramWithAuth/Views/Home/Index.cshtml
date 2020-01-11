@@ -1,0 +1,20 @@
+﻿
+<p><p><a href="/Home/Create" class="btn btn-primary btn-lg">Добавить публикацию</a></p></p>
+
+<div class="row">
+    @foreach (var post in ViewBag.PostList)
+    {
+    <div class="col-md-4">
+        <p>
+            <a href="/Home/Details/@post.Id">
+                <img src="/Content/Images/@post.Url" width="350" height="350">
+            </a>
+        </p>
+        <p class="text-success">
+            Likes = @post.Likes
+        </p>
+        <br>
+    </div>
+
+    }
+</div>
